@@ -1,0 +1,39 @@
+.tree-wrapper {
+  text-align: left;
+  font-family: Arial;
+  font-size: 1.5rem;
+
+  .expand-all-btn {
+    display: inline-block;
+    padding: .25rem .5rem;
+    font-size: 1.25rem;
+    color: #555;
+    border: 1px solid #555;
+    border-radius: .5rem;
+    cursor: pointer;
+  }
+
+  .tree-row {
+    display: flex;
+    flex-direction: row;
+    color: #555;
+
+    .expanded-mark {
+      display: flex;
+      width: 1rem;
+      height: 1rem;
+      border-radius: .5rem;
+      margin-right: 4px;
+      color: #ccc;
+    }
+
+    .tree-row-value {
+      margin-left: 0.5rem;
+      color: #000;
+    }
+  }
+
+  .pointer {
+    cursor: pointer;
+  }
+}
