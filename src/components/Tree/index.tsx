@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { addTreeId } from './utils';
 
@@ -22,7 +22,7 @@ const Tree = ({ data }: ITreeProps) => {
     const { modifiedData, treeIdList } = addTreeId(data);
     setModifiedData(modifiedData);
     setTreeIdList(treeIdList);
-  }, []);
+  }, [data]);
 
   const changeExpandedValues = (value: Maybe<string>) => {
     if (!value) {
@@ -43,11 +43,14 @@ const Tree = ({ data }: ITreeProps) => {
       if (key === TREE_ID) {
         return null;
       }
-      const isObj = obj[key] instanceof Object;
+      const value = obj[key];
+      const isObj = value instanceof Object;
       const treeId = isObj && obj[key][TREE_ID];
       const isExpanded = isObj && expandedValues.includes(treeId);
       const mark = isObj ? (isExpanded ? '-' : '+') : '';
-
+      const valueText = value === null
+        ? 'null'
+        : value;
       return (
         <div style={{ marginLeft: `${level + 1}rem` }} key={key}>
           <div
@@ -56,7 +59,7 @@ const Tree = ({ data }: ITreeProps) => {
           >
             <div className={'expanded-mark'}>{mark}</div>
             <div>{key}</div>
-            {!isObj && <div className="tree-row-value">{obj[key]}</div>}
+            {!isObj && <div className="tree-row-value">{valueText}</div>}
           </div>
           {isObj && isExpanded && <div>{renderObject(obj[key], level + 1)}</div>}
         </div>

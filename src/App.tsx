@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Tree from './components/Tree';
-import { DATA_STUB } from './constants/data'
+import { DATA_STUB } from './constants/data';
 
 import './app.scss';
 
